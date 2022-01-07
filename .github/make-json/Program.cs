@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-var files = Directory.GetFiles("../../systemData").Where(x => x.EndsWith(".ips"));
+var files = Directory.GetFiles("../../systemPatches").Where(x => x.EndsWith(".ips"));
 
 if (files.Any(x => Path.GetFileNameWithoutExtension(x).Any(Char.IsLower)))
 {
@@ -8,12 +8,12 @@ if (files.Any(x => Path.GetFileNameWithoutExtension(x).Any(Char.IsLower)))
     return -1;
 }
 
-Directory.CreateDirectory("deploy");
-Directory.CreateDirectory("deploy/ips");
+Directory.CreateDirectory("../../deploy");
+Directory.CreateDirectory("../../deploy/ips");
 
 foreach (var f in files)
 {
-    File.Copy(f, "deploy/ips/" + Path.GetFileNameWithoutExtension(f));
+    File.Copy(f, "../../deploy/ips/" + Path.GetFileNameWithoutExtension(f));
 }
 
 var s = JsonSerializer.Serialize(new
@@ -22,6 +22,6 @@ var s = JsonSerializer.Serialize(new
     ids = files.Select(x => Path.GetFileNameWithoutExtension(x)).ToArray()
 });
 
-File.WriteAllText("deploy/index.json", s);
+File.WriteAllText("../../deploy/index.json", s);
 
 return 0;
