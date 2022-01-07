@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - '**.ips'
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Run
+      run: |
+        cd .github/make-json
+        dotnet run
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.2.0
+      with:
+        branch: gh-pages
+        folder: deploy
