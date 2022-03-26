@@ -3,7 +3,7 @@ This repository contains the home menu patches needed for custom themes.
 
 For future firmware the ips files will be uploaded here and the theme installer will automatically download them so you won't need to manually downlaod latest version for each update.
 
-This feature is available starting from NXThemesInstaller 2.7 (currently unreleased) 
+This feature is available starting from NXThemesInstaller 2.7
 
 ## If you don't want to connect your console to the internet
 1) Make sure latest firmware support has been added, read the commit messages.
